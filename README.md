@@ -4,7 +4,7 @@ A lightweight, stateful **Intrusion Prevention System (IPS)** built from scratch
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture & Lab Layout
 
 ```
 ┌─────────────────────────────────┐     Host-Only Network      ┌──────────────────────────────┐
@@ -21,7 +21,8 @@ A lightweight, stateful **Intrusion Prevention System (IPS)** built from scratch
 │  iptables -I INPUT 1 -s IP DROP │  ◄── Active kernel-level block
 └─────────────────────────────────┘
 ```
-
+![Network Flow Diagram](https://raw.githubusercontent.com/KingLinux24/realtime-ips-engine/main/architecture.png)
+The environment simulates a real-world edge-defense scenario...
 Both VMs use **dual network adapters**:
 - **Adapter 1 (NAT):** Internet access for updates and installs
 - **Adapter 2 (Host-Only):** Isolated private subnet for attack/defense traffic
