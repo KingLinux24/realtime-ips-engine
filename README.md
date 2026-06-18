@@ -21,8 +21,10 @@ A lightweight, stateful **Intrusion Prevention System (IPS)** built from scratch
 │  iptables -I INPUT 1 -s IP DROP │  ◄── Active kernel-level block
 └─────────────────────────────────┘
 ```
-![Network Flow Diagram](https://raw.githubusercontent.com/KingLinux24/realtime-ips-engine/main/architecture.png)
+<img width="1868" height="895" alt="Screenshot 2026-06-18 103605" src="https://github.com/user-attachments/assets/503c625b-785c-4290-8939-99a924c18cea" />
+
 The environment simulates a real-world edge-defense scenario...
+
 Both VMs use **dual network adapters**:
 - **Adapter 1 (NAT):** Internet access for updates and installs
 - **Adapter 2 (Host-Only):** Isolated private subnet for attack/defense traffic
@@ -84,6 +86,7 @@ The engine reads `/var/log/auth.log` and calls `iptables`, so it requires root:
 ```bash
 sudo PYTHONPATH=. .venv/bin/python src/monitor.py
 ```
+<img width="1868" height="895" alt="Screenshot 2026-06-18 103605" src="https://github.com/user-attachments/assets/414b3716-9379-496b-809c-4e1c4968b888" />
 
 ### 4. Simulate an Attack (Kali)
 
@@ -94,22 +97,18 @@ hydra -l victimuser -P /usr/share/wordlists/fasttrack.txt ssh://192.168.3.128 -t
 # Password spraying across multiple users
 hydra -L users.txt -p 'Password123' ssh://192.168.3.128 -t 4
 ```
+<img width="1909" height="570" alt="Screenshot 2026-06-18 103617" src="https://github.com/user-attachments/assets/c1877703-89d0-4cff-bb68-326e2ea48700" />
 
-### 5. Verify the Block (Ubuntu)
+### 5. Verify the Block (Ubuntu) Unblock (Reset)
 
 ```bash
 sudo iptables -L INPUT -n --line-numbers
 # Expected output:
 # 1    DROP    all  --  192.168.3.129    0.0.0.0/0
-```
-
-### 6. Unblock (Reset)
-
-```bash
 sudo iptables -D INPUT 1
 ```
+<img width="1806" height="892" alt="Screenshot 2026-06-18 103635" src="https://github.com/user-attachments/assets/5c8ec032-5ecf-408c-8eb9-545b3d224cb6" />
 
----
 
 ## 📊 Detection Signals & Thresholds
 
