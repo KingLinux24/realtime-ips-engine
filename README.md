@@ -21,7 +21,8 @@ A lightweight, stateful **Intrusion Prevention System (IPS)** built from scratch
 │  iptables -I INPUT 1 -s IP DROP │  ◄── Active kernel-level block
 └─────────────────────────────────┘
 ```
-<img width="1868" height="895" alt="Screenshot 2026-06-18 103605" src="https://github.com/user-attachments/assets/503c625b-785c-4290-8939-99a924c18cea" />
+<img width="1408" height="768" alt="Gemini_Generated_Image_l6h7ail6h7ail6h7" src="https://github.com/user-attachments/assets/70573c13-5ad1-469c-b2a9-c7b4a9ee40d6" />
+
 
 The environment simulates a real-world edge-defense scenario...
 
